@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 public class CompararSorteioComLance {
 
 
@@ -5,42 +8,48 @@ public class CompararSorteioComLance {
     private int qChaves;
 
 
-    public void calcularSeusValoresAcertados(int[] jogada, int[] valorSorteado) {
+    public void calcularSeusValoresAcertados(ArrayList<Jogada> jogadaArrayList, int[] valorSorteado) {
+
+        for (Jogada jogada : jogadaArrayList) {
+
+            this.qEstrelas = 0;
+            this.qChaves = 0;
 
 
-        for (int i = 0; i < 7; i++) {
-            System.out.print(jogada[i] + " ");
-        }
+            for (int i = 0; i < 7; i++) {
+                System.out.print(jogada.getLance()[i] + " ");
+            }
 
-        System.out.println();
+            System.out.println();
 
-        for (int i = 0; i < 7; i++) {
-            System.out.print(valorSorteado[i]  + " ");
-        }
+            for (int i = 0; i < 7; i++) {
+                System.out.print(valorSorteado[i] + " ");
+            }
 
 
+            for (int i = 0; i < 7; i++) {
 
-        for (int i = 0; i < 7; i++) {
+                if (jogada.getLance()[i] == valorSorteado[i]) {
 
-            if (jogada[i] == valorSorteado[i]) {
+                    if (i < 5) {
 
-                if (i < 5) {
+                        qChaves++;
+                    }
 
-                    qChaves++;
-                }
+                    if (i >= 5) {
 
-                if (i >= 5) {
+                        qEstrelas++;
 
-                    qEstrelas++;
-
+                    }
                 }
             }
+
+            System.out.println(this.toString());
+
+
         }
 
-        System.out.println(this.toString());
-
     }
-
 
     @Override
     public String toString() {

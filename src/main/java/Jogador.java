@@ -2,23 +2,16 @@ import java.util.ArrayList;
 
 public class Jogador {
 
-
-
-
-    private Jogada jogada;
-
+    private ArrayList<Jogada> jogada  = new ArrayList<>();
 
     public Jogador() {
     }
 
-
     public void adicionarJogada(Jogada jogada){
-
-        this.jogada = jogada;
-
+        this.jogada.add(jogada);
     }
 
-    public int[] getjogada() {
-        return jogada.getLance();
+    public ArrayList<Jogada> getjogada() {
+        return this.jogada;
     }
 }
