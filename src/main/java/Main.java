@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -14,34 +15,79 @@ public class Main {
         SimularSoteio sorteioAleatorio = new SimularSoteio();
 
 
-        CompararSorteioComLance comLance = new CompararSorteioComLance();
+        CompararSorteioComLance compararSorteioComLance = new CompararSorteioComLance();
 
 
         //while () {
-        System.out.println("Informe quantas apostas voce quer fazer " +
+        System.out.println("Informe o que voce quer fazer " +
                 "\n1 - aposta" +
                 "\n2 - apostas" +
                 "\n3 - apostas" +
                 "\n4 - apostas" +
                 "\n5 - apostas" +
-                "\n6 - simular um sorteio");
+                "\n6 - simular um sorteio" +
+                "\n7 - gerar chaves aleatorias para o seu sorteio");
 
 
-        int quantidadeDeApostas = scanner.nextInt();
+        int opcaoDeAposta = scanner.nextInt();
+        
+        if(opcaoDeAposta == 7){
 
-        if (quantidadeDeApostas == 6) {
+            System.out.println("Quantos apostas aleatorias vc vai querer fazer?");
+            int numeroDeJogadasAleatorias = scanner.nextInt();
+
+
+
+            for (int i = 0; i < numeroDeJogadasAleatorias; i++) {     
+
+
+                System.out.println("APOSTA: " + (i + 1));
+
+                int[] minhaJogada = new int[7];
+
+                for (int j = 0; j < 7; j++) {  
+
+                    if (j < 5) {
+                        
+                       
+                        minhaJogada[j] =  new Random().nextInt(50) + 1;;
+
+                    }
+
+                    if (j >= 5) {
+
+                       
+                        minhaJogada[j] =  new Random().nextInt(11) + 1;;
+                    }
+
+                } 
+                Jogada jogo = new Jogada(minhaJogada);  
+                player.adicionarJogada(jogo); 
+
+
+            } 
+
+
+            compararSorteioComLance.calcularSeusValoresAcertados(player.getjogada(), sorteio.getJogadaSorteada());
+            
+            
+            
+            
+        }
+
+        else if (opcaoDeAposta == 6) {
 
             Jogada jogadaAleatoria = new Jogada(new SimularSoteio().getJogadaSorteada());
 
             playerJogadaAleatoria.adicionarJogada(jogadaAleatoria);
 
-            comLance.calcularSeusValoresAcertados(playerJogadaAleatoria.getjogada(), sorteioAleatorio.getJogadaSorteada());
+            compararSorteioComLance.calcularSeusValoresAcertados(playerJogadaAleatoria.getjogada(), sorteioAleatorio.getJogadaSorteada());
 
 
-        } else {
+        } else if (opcaoDeAposta != 6 && opcaoDeAposta != 7){
 
 
-            for (int i = 0; i < quantidadeDeApostas; i++) {     /// o for mais externo , o da quantidade de jogadas se inicia aqui
+            for (int i = 0; i < opcaoDeAposta; i++) {     /// o for mais externo , o da quantidade de jogadas se inicia aqui
 
 
                 System.out.println("APOSTA: " + (i + 1));
@@ -87,7 +133,7 @@ public class Main {
             } /// o for mais externo , o da quantidade de jogadas acaba aqui
 
 
-            comLance.calcularSeusValoresAcertados(player.getjogada(), sorteio.getJogadaSorteada()); /// nessa linha calculamos os acertos, ela vai receber o jogador e sua lista de jogadas
+            compararSorteioComLance.calcularSeusValoresAcertados(player.getjogada(), sorteio.getJogadaSorteada()); /// nessa linha calculamos os acertos, ela vai receber o jogador e sua lista de jogadas
 
             //verificar metodo calcularSeusValoresAcertados da classe CompararSorteioComLance
 
