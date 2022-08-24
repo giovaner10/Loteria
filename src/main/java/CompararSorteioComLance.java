@@ -15,15 +15,36 @@ public class CompararSorteioComLance {
             this.qEstrelas = 0;
             this.qChaves = 0;
 
-
+            System.out.print("USUARIO: ");
             for (int i = 0; i < 7; i++) {
-                System.out.print(jogada.getLance()[i] + " ");
+
+                if (i < 5) {
+
+                    System.out.print("C["+ i +"] = " +jogada.getLance()[i] + " , ");
+                }
+
+                if (i >= 5) {
+
+                    System.out.print("E["+ (i == 5 ? 1 : 2) +"] = " + jogada.getLance()[i] + " ");
+
+                }
             }
 
             System.out.println();
+            System.out.print("MAQUINA: ");
 
             for (int i = 0; i < 7; i++) {
-                System.out.print(valorSorteado[i] + " ");
+
+                if (i < 5) {
+
+                    System.out.print("C["+ i +"] = " +valorSorteado[i] + " , ");
+                }
+
+                if (i >= 5) {
+
+                    System.out.print("E["+ (i == 5 ? 1 : 2) +"] = " +valorSorteado[i] + " ");
+
+                }
             }
 
 
@@ -44,6 +65,8 @@ public class CompararSorteioComLance {
                 }
             }
 
+
+            System.out.println();
             System.out.println(this.toString());
 
 
@@ -53,9 +76,8 @@ public class CompararSorteioComLance {
 
     @Override
     public String toString() {
-        return "CompararSorteioComLance{ " +
-                " qEstrelas = " + qEstrelas +
-                ", qChaves = " + qChaves +
-                '}';
+        return
+                "qEstrelas = " + qEstrelas +
+                ", qChaves = " + qChaves;
     }
 }
